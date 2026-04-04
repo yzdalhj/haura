@@ -12,6 +12,7 @@ import { HLoading } from './loading'
 import { HRow, HCol } from './grid'
 import { HSpace } from './space'
 import { HTabs, HTabPane } from './tabs'
+import { HDialog, useDialog } from './dialog'
 
 export { HButton } from './button'
 export { HIcon } from './icon'
@@ -28,6 +29,7 @@ export { HLoading, vLoading, service as loadingService } from './loading'
 export { HRow, HCol } from './grid'
 export { HSpace } from './space'
 export { HTabs, HTabPane } from './tabs'
+export { HDialog, useDialog } from './dialog'
 
 export type { ButtonProps, ButtonEmits, ButtonType, ButtonSize, NativeType } from './button'
 export type { IconProps, IconEmits, IconSize } from './icon'
@@ -39,6 +41,7 @@ export type { LoadingProps, LoadingEmits, LoadingType, LoadingSize, LoadingInsta
 export type { RowProps, RowEmits, ColProps, ColEmits, Breakpoint, Justify, Align } from './grid'
 export type { SpaceProps, SpaceEmits, SpaceSize, SpaceDirection, SpaceAlignment } from './space'
 export type { TabsProps, TabsEmits, TabPaneProps, TabPaneEmits, TabType, TabPosition, TabSize, TabPaneInstance } from './tabs'
+export type { DialogProps, DialogEmits, DialogInstance, DialogOptions, DialogButton, DialogType, DialogSize, DialogAnimation } from './dialog'
 
 export const components = [
   HButton,
@@ -57,6 +60,7 @@ export const components = [
   HSpace,
   HTabs,
   HTabPane,
+  HDialog,
 ]
 
 import type { App, Plugin } from 'vue'
