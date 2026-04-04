@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: Haura UI
-  text: 克制而精致的 Vue 3 组件库
-  tagline: 微妙光效 · 动效节奏 · 完整 Props
+  text: 为细节而生的 Vue 3 组件库
+  tagline: 每一处交互，都值得被认真对待
   image:
     src: /logo.svg
     alt: Haura UI
@@ -21,23 +21,23 @@ hero:
 
 features:
   - icon: ✨
-    title: 微妙光效系统
-    details: 聚焦、悬停、选中时的柔和光晕，克制的视觉反馈
+    title: 细腻光效
+    details: 悬停时的微光、聚焦时的光晕，让每次交互都有温度
   - icon: 🎭
-    title: 动效节奏感
-    details: 独特的缓动曲线和时序编排，让交互充满韵律
+    title: 流畅动效
+    details: 精心调校的动画曲线，让界面呼吸起来
   - icon: 📦
-    title: 完整 Props
-    details: 对标主流 UI 库的属性配置，扩展动效属性
+    title: 丰富配置
+    details: 详尽的属性定义，满足各种场景需求
   - icon: 🎨
-    title: 6 套主题
-    details: 亮色/暗色 × 中性/暖色/冷色，开箱即用
+    title: 主题系统
+    details: 6 套精心设计的主题，一键切换明暗冷暖
   - icon: 🌐
-    title: 国际化
-    details: 内置多语言支持，轻松扩展
+    title: 多语言支持
+    details: 内置国际化方案，适配全球用户
   - icon: 📱
-    title: 响应式
-    details: 移动端适配，触控友好
+    title: 响应式设计
+    details: 从桌面到移动端，体验始终如一
 ---
 
 <style>
@@ -86,16 +86,6 @@ const app = createApp(App)
 app.use(HauraUI)
 app.mount('#app')
 ```
-
-## 设计理念
-
-**克制而精致，耐看而不乏味**
-
-Haura UI 追求的是一种克制的精致感。我们不堆砌特效，而是通过微妙的光效和节奏感的动效，让界面在细节处展现品质。
-
-- **微妙光效** — 聚焦、悬停、选中时的柔和光晕
-- **动效节奏** — 独特的缓动曲线和时序编排
-- **完整 Props** — 丰富的配置项，满足各种需求
 
 ## 浏览器支持
 
