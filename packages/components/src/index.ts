@@ -13,6 +13,7 @@ import { HRow, HCol } from './grid'
 import { HSpace } from './space'
 import { HTabs, HTabPane } from './tabs'
 import { HDialog, useDialog } from './dialog'
+import { HForm, HFormItem, useForm } from './form'
 
 export { HButton } from './button'
 export { HIcon } from './icon'
@@ -30,6 +31,7 @@ export { HRow, HCol } from './grid'
 export { HSpace } from './space'
 export { HTabs, HTabPane } from './tabs'
 export { HDialog, useDialog } from './dialog'
+export { HForm, HFormItem, useForm } from './form'
 
 export type { ButtonProps, ButtonEmits, ButtonType, ButtonSize, NativeType } from './button'
 export type { IconProps, IconEmits, IconSize } from './icon'
@@ -42,6 +44,7 @@ export type { RowProps, RowEmits, ColProps, ColEmits, Breakpoint, Justify, Align
 export type { SpaceProps, SpaceEmits, SpaceSize, SpaceDirection, SpaceAlignment } from './space'
 export type { TabsProps, TabsEmits, TabPaneProps, TabPaneEmits, TabType, TabPosition, TabSize, TabPaneInstance } from './tabs'
 export type { DialogProps, DialogEmits, DialogInstance, DialogOptions, DialogButton, DialogType, DialogSize, DialogAnimation } from './dialog'
+export type { FormProps, FormEmits, FormInstance, FormConfig, FormRule, FieldType, FormLayout, FormMode } from './form'
 
 export const components = [
   HButton,
@@ -61,6 +64,8 @@ export const components = [
   HTabs,
   HTabPane,
   HDialog,
+  HForm,
+  HFormItem,
 ]
 
 import type { App, Plugin } from 'vue'
