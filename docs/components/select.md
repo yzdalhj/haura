@@ -2,145 +2,93 @@
 
 下拉选择器，支持单选、多选、搜索等功能。
 
+## 交互演示
+
+<ComponentPlayground
+  component="select"
+  :defaultProps="{ placeholder: '请选择' }"
+  :propConfig="{
+    disabled: {
+      type: 'boolean',
+      label: '禁用',
+      default: false
+    },
+    clearable: {
+      type: 'boolean',
+      label: '可清空',
+      default: false
+    },
+    multiple: {
+      type: 'boolean',
+      label: '多选',
+      default: false
+    },
+    filterable: {
+      type: 'boolean',
+      label: '可搜索',
+      default: false
+    },
+    size: {
+      type: 'select',
+      label: '尺寸',
+      default: 'default',
+      options: [
+        { label: 'Small', value: 'small' },
+        { label: 'Default', value: 'default' },
+        { label: 'Large', value: 'large' },
+      ]
+    }
+  }"
+  :events="['change', 'clear', 'visible-change']"
+>
+  <template #default="{ props, on }">
+    <div style="width: 240px;">
+      <HSelect 
+        v-bind="props"
+        :options="options"
+        @change="on('change', $event)"
+        @clear="on('clear')"
+        @visible-change="on('visible-change', $event)"
+      />
+    </div>
+  </template>
+</ComponentPlayground>
+
 ## 基础用法
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HSelect v-model="value" :options="options" placeholder="请选择" />
-    <p>当前值: {{ value }}</p>
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-
-const options = [
-  { label: '选项一', value: '1' },
-  { label: '选项二', value: '2' },
-  { label: '选项三', value: '3' },
-]
-</script>
-:::
-
-## 禁用状态
-
-:::demo
-<template>
-  <div class="demo-block">
-    <HSelect v-model="value" disabled placeholder="禁用状态" />
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-</script>
-:::
-
-## 可清空
-
-使用 `clearable` 属性即可开启清空功能。
-
-:::demo
-<template>
-  <div class="demo-block">
-    <HSelect v-model="value" :options="options" clearable placeholder="可清空" />
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('1')
-
-const options = [
-  { label: '选项一', value: '1' },
-  { label: '选项二', value: '2' },
-  { label: '选项三', value: '3' },
-]
-</script>
-:::
+<ComponentPlayground
+  component="select"
+>
+  <template #default>
+    <div style="width: 240px;">
+      <HSelect v-model="value" :options="options" placeholder="请选择" />
+    </div>
+  </template>
+</ComponentPlayground>
 
 ## 多选
 
-设置 `multiple` 属性开启多选模式。
-
-:::demo
-<template>
-  <div class="demo-block">
-    <HSelect v-model="value" :options="options" multiple placeholder="请选择多项" />
-    <p>当前值: {{ value }}</p>
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-
-const value = ref([])
-
-const options = [
-  { label: '选项一', value: '1' },
-  { label: '选项二', value: '2' },
-  { label: '选项三', value: '3' },
-]
-</script>
-:::
+<ComponentPlayground
+  component="select"
+>
+  <template #default>
+    <div style="width: 300px;">
+      <HSelect v-model="values" :options="options" multiple placeholder="请选择多项" />
+    </div>
+  </template>
+</ComponentPlayground>
 
 ## 可搜索
 
-设置 `filterable` 属性开启搜索功能。
-
-:::demo
-<template>
-  <div class="demo-block">
-    <HSelect v-model="value" :options="options" filterable placeholder="可搜索" />
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-
-const options = [
-  { label: '北京', value: 'beijing' },
-  { label: '上海', value: 'shanghai' },
-  { label: '广州', value: 'guangzhou' },
-  { label: '深圳', value: 'shenzhen' },
-]
-</script>
-:::
-
-## 分组
-
-使用 `options` 中的 `group` 字段实现分组。
-
-:::demo
-<template>
-  <div class="demo-block">
-    <HSelect v-model="value" :options="options" placeholder="请选择城市" />
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('')
-
-const options = [
-  { label: '热门城市', group: true },
-  { label: '北京', value: 'beijing' },
-  { label: '上海', value: 'shanghai' },
-  { label: '广东省', group: true },
-  { label: '广州', value: 'guangzhou' },
-  { label: '深圳', value: 'shenzhen' },
-]
-</script>
-:::
+<ComponentPlayground
+  component="select"
+>
+  <template #default>
+    <div style="width: 240px;">
+      <HSelect v-model="value" :options="options" filterable placeholder="可搜索" />
+    </div>
+  </template>
+</ComponentPlayground>
 
 ## API
 
