@@ -14,6 +14,10 @@ import { HSpace } from './space'
 import { HTabs, HTabPane } from './tabs'
 import { HDialog, useDialog } from './dialog'
 import { HForm, HFormItem, useForm } from './form'
+import { HTable, useTable } from './table'
+
+// 初始化内置字段类型
+import './field-types/builtin'
 
 export { HButton } from './button'
 export { HIcon } from './icon'
@@ -32,6 +36,10 @@ export { HSpace } from './space'
 export { HTabs, HTabPane } from './tabs'
 export { HDialog, useDialog } from './dialog'
 export { HForm, HFormItem, useForm } from './form'
+export { HTable, useTable } from './table'
+
+// 字段类型注册
+export { registerFieldType, getFieldType, hasFieldType, getAllFieldTypes, getFormFieldTypes, getDisplayFieldTypes } from './field-types'
 
 export type { ButtonProps, ButtonEmits, ButtonType, ButtonSize, NativeType } from './button'
 export type { IconProps, IconEmits, IconSize } from './icon'
@@ -45,6 +53,8 @@ export type { SpaceProps, SpaceEmits, SpaceSize, SpaceDirection, SpaceAlignment 
 export type { TabsProps, TabsEmits, TabPaneProps, TabPaneEmits, TabType, TabPosition, TabSize, TabPaneInstance } from './tabs'
 export type { DialogProps, DialogEmits, DialogInstance, DialogOptions, DialogButton, DialogType, DialogSize, DialogAnimation } from './dialog'
 export type { FormProps, FormEmits, FormInstance, FormConfig, FormRule, FieldType, FormLayout, FormMode } from './form'
+export type { TableProps, TableEmits, TableColumn, TableInstance, TableColumnType, TableSortOrder, SearchConfig, PaginationConfig } from './table'
+export type { FieldTypeConfig } from './field-types'
 
 export const components = [
   HButton,
@@ -66,6 +76,7 @@ export const components = [
   HDialog,
   HForm,
   HFormItem,
+  HTable,
 ]
 
 import type { App, Plugin } from 'vue'
