@@ -4,7 +4,6 @@ export type InputSize = 'large' | 'default' | 'small'
 export type InputType = 'text' | 'password' | 'textarea' | 'email' | 'number' | 'tel' | 'url'
 
 export const inputProps = {
-  // Element Plus 标准 Props
   type: {
     type: String as PropType<InputType>,
     default: 'text',

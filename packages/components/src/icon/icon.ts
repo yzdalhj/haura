@@ -1,6 +1,5 @@
 /**
  * HIcon - 图标组件
- * Props 对标 Element Plus，并扩展动效相关属性
  */
 
 import type { PropType, ExtractPropTypes } from 'vue'
