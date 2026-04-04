@@ -4,6 +4,9 @@ export default defineConfig({
   title: 'Haura UI',
   description: '克制而精致的 Vue 3 组件库',
   
+  // GitHub Pages 部署时取消注释下一行
+  // base: '/haura/',
+  
   head: [
     ['link', { rel: 'icon', href: '/favicon.svg' }],
     ['meta', { name: 'theme-color', content: '#0ea5e9' }],
