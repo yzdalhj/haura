@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "types": ["vite/client", "node"],
+    "baseUrl": ".",
+    "paths": {
+      "@haura/components": ["./packages/components/src/index.ts"],
+      "@haura/theme": ["./packages/theme/src/index.ts"],
+      "@haura/motion": ["./packages/motion/src/index.ts"],
+      "@haura/effects": ["./packages/effects/src/index.ts"],
+      "@haura/utils": ["./packages/utils/src/index.ts"],
+      "@haura/locale": ["./packages/locale/src/index.ts"],
+      "@haura/icons": ["./packages/icons/src/index.ts"]
+    }
+  },
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.vue",
+    "docs/.vitepress/**/*.ts",
+    "playground/**/*.ts",
+    "playground/**/*.vue"
+  ],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+}

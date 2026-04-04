@@ -1,0 +1,18 @@
+{
+  "name": "@haura/docs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0-rc.35",
+    "vue": "^3.3.11",
+    "@haura/components": "workspace:*",
+    "@haura/theme": "workspace:*",
+    "unocss": "^0.58.0"
+  }
+}

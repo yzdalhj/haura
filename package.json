@@ -1,0 +1,55 @@
+{
+  "name": "haura-ui",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Vue 3 UI component library with immersive interaction experience",
+  "keywords": [
+    "vue",
+    "vue3",
+    "ui",
+    "components",
+    "typescript",
+    "animation",
+    "interaction"
+  ],
+  "author": "Haura Team",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm -F playground dev",
+    "build": "pnpm -r --filter ./packages run build",
+    "build:components": "pnpm -F @haura/components build",
+    "build:theme": "pnpm -F @haura/theme build",
+    "build:motion": "pnpm -F @haura/motion build",
+    "clean": "rimraf packages/*/dist && rimraf node_modules/.cache",
+    "lint": "eslint . --ext .ts,.tsx,.vue",
+    "lint:fix": "eslint . --ext .ts,.tsx,.vue --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,vue,json,md}\"",
+    "typecheck": "tsc --noEmit",
+    "docs:dev": "pnpm -F docs dev",
+    "docs:build": "pnpm -F docs build",
+    "test": "vitest",
+    "release": "pnpm build && changeset publish",
+    "changeset": "changeset"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@types/node": "^20.10.4",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-vue": "^9.19.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3",
+    "vitest": "^1.0.4",
+    "vue": "^3.3.11"
+  },
+  "packageManager": "pnpm@8.12.1",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

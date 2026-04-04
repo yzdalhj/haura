@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": false,
+    "paths": {}
+  },
+  "exclude": ["node_modules", "dist", "docs", "playground", "**/*.test.ts", "**/__tests__"]
+}
