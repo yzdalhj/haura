@@ -4,105 +4,11 @@
 
 ## 基础用法
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HTabs v-model="activeTab">
-      <HTabPane name="tab1" label="标签一">
-        内容一
-      </HTabPane>
-      <HTabPane name="tab2" label="标签二">
-        内容二
-      </HTabPane>
-      <HTabPane name="tab3" label="标签三">
-        内容三
-      </HTabPane>
-    </HTabs>
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-
-const activeTab = ref('tab1')
-</script>
-:::
+基础的标签页用法。
 
 ## 样式类型
 
-支持 `line`、`card`、`border-card`、`segment` 四种样式。
-
-:::demo
-<template>
-  <div class="demo-block">
-    <HTabs v-model="activeTab" type="card">
-      <HTabPane name="tab1" label="卡片样式">内容一</HTabPane>
-      <HTabPane name="tab2" label="卡片样式">内容二</HTabPane>
-    </HTabs>
-  </div>
-  <div class="demo-block">
-    <HTabs v-model="activeTab" type="segment">
-      <HTabPane name="tab1" label="分段样式">内容一</HTabPane>
-      <HTabPane name="tab2" label="分段样式">内容二</HTabPane>
-    </HTabs>
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-
-const activeTab = ref('tab1')
-</script>
-:::
-
-## 标签位置
-
-使用 `tabPosition` 属性设置标签位置。
-
-:::demo
-<template>
-  <div class="demo-block">
-    <HTabs v-model="activeTab" tab-position="left">
-      <HTabPane name="tab1" label="标签一">内容一</HTabPane>
-      <HTabPane name="tab2" label="标签二">内容二</HTabPane>
-      <HTabPane name="tab3" label="标签三">内容三</HTabPane>
-    </HTabs>
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-
-const activeTab = ref('tab1')
-</script>
-:::
-
-## 可关闭
-
-使用 `closable` 属性显示关闭按钮。
-
-:::demo
-<template>
-  <div class="demo-block">
-    <HTabs v-model="activeTab" type="card" closable>
-      <HTabPane v-for="tab in tabs" :key="tab.name" :name="tab.name" :label="tab.label">
-        {{ tab.content }}
-      </HTabPane>
-    </HTabs>
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-
-const activeTab = ref('tab1')
-const tabs = ref([
-  { name: 'tab1', label: '标签一', content: '内容一' },
-  { name: 'tab2', label: '标签二', content: '内容二' },
-  { name: 'tab3', label: '标签三', content: '内容三' },
-])
-</script>
-:::
+支持 `line`、`card`、`segment` 四种样式。
 
 ## API
 

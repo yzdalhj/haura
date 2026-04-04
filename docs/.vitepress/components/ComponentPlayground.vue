@@ -1,6 +1,27 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, shallowRef, h, type Component } from 'vue'
-import * as HauraComponents from '@haura/components'
+
+// 直接导入本地组件
+import HButton from '../../../packages/components/src/button/button.vue'
+import HIcon from '../../../packages/components/src/icon/icon.vue'
+import HInput from '../../../packages/components/src/input/input.vue'
+import HSelect from '../../../packages/components/src/select/select.vue'
+import HCheckbox from '../../../packages/components/src/checkbox/checkbox.vue'
+import HRadio from '../../../packages/components/src/radio/radio.vue'
+import HSwitch from '../../../packages/components/src/switch/switch.vue'
+import HCard from '../../../packages/components/src/card/card.vue'
+import HTag from '../../../packages/components/src/tag/tag.vue'
+import HDrawer from '../../../packages/components/src/drawer/drawer.vue'
+import HLoading from '../../../packages/components/src/loading/loading.vue'
+import HRow from '../../../packages/components/src/grid/row.vue'
+import HCol from '../../../packages/components/src/grid/col.vue'
+import HSpace from '../../../packages/components/src/space/space.vue'
+import HTabs from '../../../packages/components/src/tabs/tabs.vue'
+import HTabPane from '../../../packages/components/src/tabs/tab-pane.vue'
+import HDialog from '../../../packages/components/src/dialog/dialog.vue'
+import HForm from '../../../packages/components/src/form/form.vue'
+import HFormItem from '../../../packages/components/src/form/form-item.vue'
+import HTable from '../../../packages/components/src/table/table.vue'
 
 const props = defineProps<{
   component: string
@@ -10,10 +31,33 @@ const props = defineProps<{
   events?: string[]
 }>()
 
+// 组件映射
+const componentMap: Record<string, any> = {
+  button: HButton,
+  icon: HIcon,
+  input: HInput,
+  select: HSelect,
+  checkbox: HCheckbox,
+  radio: HRadio,
+  switch: HSwitch,
+  card: HCard,
+  tag: HTag,
+  drawer: HDrawer,
+  loading: HLoading,
+  row: HRow,
+  col: HCol,
+  space: HSpace,
+  tabs: HTabs,
+  tabPane: HTabPane,
+  dialog: HDialog,
+  form: HForm,
+  formItem: HFormItem,
+  table: HTable,
+}
+
 // 动态获取组件
 const ComponentDemo = computed(() => {
-  const componentName = `H${props.component.charAt(0).toUpperCase() + props.component.slice(1)}`
-  return (HauraComponents as any)[componentName]
+  return componentMap[props.component.toLowerCase()]
 })
 
 // 当前 props 值

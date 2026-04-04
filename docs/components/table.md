@@ -4,163 +4,26 @@
 
 ## 基础用法
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HTable :data="tableData" :columns="columns" />
-  </div>
-</template>
-
-<script setup>
-const columns = [
-  { prop: 'name', label: '姓名', width: 120 },
-  { prop: 'age', label: '年龄', width: 80 },
-  { prop: 'address', label: '地址' },
-]
-
-const tableData = [
-  { name: '张三', age: 28, address: '北京市朝阳区' },
-  { name: '李四', age: 32, address: '上海市浦东新区' },
-  { name: '王五', age: 25, address: '广州市天河区' },
-]
-</script>
-:::
 
 ## 带搜索栏
 
 设置 `search` 属性开启搜索栏，列配置中设置 `searchable` 标记可搜索字段。
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HTable 
-      :data="tableData" 
-      :columns="columns" 
-      search
-      :pagination="{ pageSize: 5 }"
-    />
-  </div>
-</template>
-
-<script setup>
-const columns = [
-  { prop: 'name', label: '姓名', searchable: true },
-  { prop: 'age', label: '年龄', sortable: true },
-  { 
-    prop: 'status', 
-    label: '状态',
-    type: 'tag',
-    searchable: true,
-    searchType: 'select',
-    options: [
-      { label: '在职', value: '在职', type: 'success' },
-      { label: '离职', value: '离职', type: 'danger' },
-    ]
-  },
-]
-
-const tableData = [
-  { name: '张三', age: 28, status: '在职' },
-  { name: '李四', age: 32, status: '在职' },
-  { name: '王五', age: 25, status: '离职' },
-]
-</script>
-:::
 
 ## 排序
 
 设置 `sortable` 属性开启排序功能。
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HTable :data="tableData" :columns="columns" />
-  </div>
-</template>
-
-<script setup>
-const columns = [
-  { prop: 'name', label: '姓名', width: 120 },
-  { prop: 'age', label: '年龄', width: 100, sortable: true },
-  { prop: 'score', label: '分数', width: 100, sortable: true },
-]
-
-const tableData = [
-  { name: '张三', age: 28, score: 85 },
-  { name: '李四', age: 32, score: 92 },
-  { name: '王五', age: 25, score: 78 },
-]
-</script>
-:::
 
 ## 单元格渲染
 
 支持 `slot`、`render`、`type`、`format` 多种渲染方式。
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HTable :data="tableData" :columns="columns">
-      <template #avatar="{ value }">
-        <img :src="value" style="width: 40px; height: 40px; border-radius: 50%;" />
-      </template>
-    </HTable>
-  </div>
-</template>
-
-<script setup>
-const columns = [
-  { prop: 'avatar', label: '头像', type: 'image', imageConfig: { width: 40, height: 40 } },
-  { prop: 'name', label: '姓名' },
-  { prop: 'progress', label: '进度', type: 'progress' },
-  { 
-    prop: 'status', 
-    label: '状态', 
-    type: 'tag',
-    options: [
-      { label: '进行中', value: 'processing', type: 'primary' },
-      { label: '已完成', value: 'done', type: 'success' },
-    ]
-  },
-  { prop: 'price', label: '价格', format: v => `¥${v.toLocaleString()}`, align: 'right' },
-]
-
-const tableData = [
-  { avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=1', name: '张三', progress: 60, status: 'processing', price: 12800 },
-  { avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=2', name: '李四', progress: 100, status: 'done', price: 25600 },
-]
-</script>
-:::
 
 ## 分页
 
 设置 `pagination` 属性开启分页。
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HTable 
-      :data="tableData" 
-      :columns="columns" 
-      :pagination="{ current: 1, pageSize: 5, total: 20 }"
-    />
-  </div>
-</template>
-
-<script setup>
-const columns = [
-  { prop: 'id', label: 'ID', width: 80 },
-  { prop: 'name', label: '姓名' },
-  { prop: 'email', label: '邮箱' },
-]
-
-const tableData = Array.from({ length: 20 }, (_, i) => ({
-  id: i + 1,
-  name: `用户${i + 1}`,
-  email: `user${i + 1}@example.com`,
-}))
-</script>
-:::
 
 ## API
 

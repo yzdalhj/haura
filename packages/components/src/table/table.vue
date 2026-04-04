@@ -474,10 +474,6 @@ function handleSearchChange(values: Record<string, any>) {
   searchValues.value = values
 }
 
-function handleSearch(params: Record<string, any>) {
-  emit('search', params)
-}
-
 defineExpose({
   ...table,
   sortState,

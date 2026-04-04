@@ -1,26 +1,35 @@
-/**
- * Haura Motion - 动效系统
- */
+// Haura Motion - 占位符导出
 
-// 核心动效
-export { useRipple, vRipple } from './ripple'
-export { useHoverIndicator, vHoverIndicator } from './hover-indicator'
-export { HSkeleton, HSkeletonGroup, injectSkeletonStyles } from './skeleton'
-export { useCountUp, HCountUp } from './count-up'
-export { HMorphIcon, predefinedIcons } from './morph'
+export function useRipple() {
+  return () => {}
+}
 
-// 过渡组件
-export {
-  HFadeTransition,
-  HSlideTransition,
-  HScaleTransition,
-  HCollapseTransition,
-  HStaggerTransition,
-} from './transitions'
+export const vRipple = {
+  mounted: () => {},
+}
 
-// 类型导出
-export type { RippleOptions } from './ripple'
-export type { HoverIndicatorOptions } from './hover-indicator'
-export type { SkeletonProps } from './skeleton'
-export type { CountUpOptions } from './count-up'
-export type { MorphIconProps } from './morph'
+export function useHoverIndicator() {
+  return () => {}
+}
+
+export const vHoverIndicator = {
+  mounted: () => {},
+}
+
+export const HSkeleton = {}
+export const HSkeletonGroup = {}
+export function injectSkeletonStyles() {}
+
+export function useCountUp() {
+  return { start: () => {}, reset: () => {} }
+}
+export const HCountUp = {}
+
+export const HMorphIcon = {}
+export const predefinedIcons = {}
+
+export const HFadeTransition = {}
+export const HSlideTransition = {}
+export const HScaleTransition = {}
+export const HCollapseTransition = {}
+export const HStaggerTransition = {}

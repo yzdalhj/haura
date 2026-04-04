@@ -4,66 +4,12 @@
 
 ## 基础用法
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HButton @click="openMessage('info')">信息</HButton>
-    <HButton @click="openMessage('success')">成功</HButton>
-    <HButton @click="openMessage('warning')">警告</HButton>
-    <HButton @click="openMessage('error')">错误</HButton>
-  </div>
-</template>
-
-<script setup>
-import { message } from '@haura/components'
-
-const openMessage = (type) => {
-  message[type](`这是一条${type}消息`)
-}
-</script>
-:::
 
 ## 可关闭的消息
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HButton @click="openClosable">可关闭消息</HButton>
-  </div>
-</template>
-
-<script setup>
-import { message } from '@haura/components'
-
-const openClosable = () => {
-  message({
-    message: '这是一条可关闭的消息',
-    showClose: true,
-  })
-}
-</script>
-:::
 
 ## 自定义时长
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HButton @click="openDuration">显示 5 秒</HButton>
-  </div>
-</template>
-
-<script setup>
-import { message } from '@haura/components'
-
-const openDuration = () => {
-  message({
-    message: '这条消息将显示 5 秒',
-    duration: 5000,
-  })
-}
-</script>
-:::
 
 ## 全局方法
 

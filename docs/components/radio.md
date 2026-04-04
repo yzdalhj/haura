@@ -4,87 +4,19 @@
 
 ## 基础用法
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HRadio.Group v-model="value">
-      <HRadio value="1">选项一</HRadio>
-      <HRadio value="2">选项二</HRadio>
-      <HRadio value="3">选项三</HRadio>
-    </HRadio.Group>
-    <p>当前值: {{ value }}</p>
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('1')
-</script>
-:::
 
 ## 禁用状态
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HRadio.Group v-model="value" disabled>
-      <HRadio value="1">选项一</HRadio>
-      <HRadio value="2">选项二</HRadio>
-    </HRadio.Group>
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('1')
-</script>
-:::
 
 ## 按钮样式
 
 使用 `button` 属性显示为按钮样式。
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HRadio.Group v-model="value">
-      <HRadio value="1" button>选项一</HRadio>
-      <HRadio value="2" button>选项二</HRadio>
-      <HRadio value="3" button>选项三</HRadio>
-    </HRadio.Group>
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('1')
-</script>
-:::
 
 ## 带边框
 
 使用 `border` 属性显示边框。
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HRadio.Group v-model="value">
-      <HRadio value="1" border>选项一</HRadio>
-      <HRadio value="2" border>选项二</HRadio>
-      <HRadio value="3" border>选项三</HRadio>
-    </HRadio.Group>
-  </div>
-</template>
-
-<script setup>
-import { ref } from 'vue'
-
-const value = ref('1')
-</script>
-:::
 
 ## API
 
