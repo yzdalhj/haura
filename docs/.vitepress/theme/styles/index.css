@@ -1,0 +1,151 @@
+/* 文档站点自定义样式 */
+
+:root {
+  --haura-primary: #0ea5e9;
+  --haura-primary-light: #38bdf8;
+  --haura-primary-dark: #0284c7;
+}
+
+/* 组件演示区块 */
+.demo-block {
+  padding: 24px;
+  margin: 16px 0;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+}
+
+.demo-block + .demo-block {
+  margin-top: 24px;
+}
+
+.demo-block__title {
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.demo-block__content {
+  padding: 16px 0;
+}
+
+.demo-block__actions {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--vp-c-divider);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* 组件属性表格 */
+.props-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+}
+
+.props-table th,
+.props-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.props-table th {
+  font-weight: 600;
+  background: var(--vp-c-bg-soft);
+}
+
+.props-table code {
+  font-size: 13px;
+  padding: 2px 6px;
+  background: var(--vp-c-bg-soft);
+  border-radius: 4px;
+}
+
+/* API 文档样式 */
+.api-section {
+  margin: 32px 0;
+}
+
+.api-section h3 {
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+/* 代码块增强 */
+.vp-code-group .tabs label {
+  font-size: 13px;
+}
+
+/* 自定义容器 */
+.custom-block {
+  margin: 16px 0;
+}
+
+.custom-block.tip {
+  border-color: var(--haura-primary);
+}
+
+.custom-block.tip .custom-block-title {
+  color: var(--haura-primary);
+}
+
+/* 暗色模式适配 */
+.dark .demo-block {
+  background: var(--vp-c-bg-soft);
+}
+
+/* 交互式演示 */
+.interactive-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.interactive-demo__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px;
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+}
+
+.interactive-demo__preview {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+}
+
+/* 状态标签 */
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.status-tag--stable {
+  background: #10b98120;
+  color: #10b981;
+}
+
+.status-tag--beta {
+  background: #f59e0b20;
+  color: #f59e0b;
+}
+
+.status-tag--experimental {
+  background: #8b5cf620;
+  color: #8b5cf6;
+}
