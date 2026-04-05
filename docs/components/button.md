@@ -4,6 +4,8 @@
 
 ## 基础用法
 
+基础的按钮类型、尺寸、禁用和加载状态。
+
 <ComponentPlayground
   component="button"
   :defaultProps="{ type: 'primary' }"
@@ -53,6 +55,8 @@
 
 ## 按钮形状
 
+通过 `plain`、`round`、`circle`、`block` 组合出不同的视觉形态。
+
 <ComponentPlayground
   component="button"
   :defaultProps="{ type: 'primary' }"
@@ -71,6 +75,11 @@
       type: 'boolean',
       label: '圆形',
       default: false
+    },
+    block: {
+      type: 'boolean',
+      label: '块级按钮',
+      default: false
     }
   }"
 >
@@ -81,6 +90,8 @@
 
 ## 动效配置
 
+Haura 扩展的微交互动效，可自由组合。
+
 <ComponentPlayground
   component="button"
   :defaultProps="{ type: 'primary' }"
@@ -89,6 +100,17 @@
       type: 'boolean',
       label: '涟漪效果',
       default: true
+    },
+    rippleColor: {
+      type: 'select',
+      label: '涟漪颜色',
+      default: 'currentColor',
+      options: [
+        { label: '默认', value: 'currentColor' },
+        { label: '白色', value: '#ffffff' },
+        { label: '金色', value: '#fbbf24' },
+        { label: '青色', value: '#22d3d3' }
+      ]
     },
     hoverLift: {
       type: 'boolean',
@@ -104,6 +126,17 @@
       type: 'boolean',
       label: '点击缩放',
       default: true
+    },
+    glowColor: {
+      type: 'select',
+      label: '发光颜色',
+      default: '',
+      options: [
+        { label: '默认', value: '' },
+        { label: '蓝色', value: '#3b82f6' },
+        { label: '紫色', value: '#8b5cf6' },
+        { label: '粉色', value: '#ec4899' }
+      ]
     },
     glass: {
       type: 'boolean',
@@ -122,30 +155,81 @@
   </template>
 </ComponentPlayground>
 
-## 布局与图标
+## 图标按钮
+
+支持通过 `icon` 属性或 `icon` 插槽插入图标，`loadingSlot` 可自定义加载图标。
 
 <ComponentPlayground
   component="button"
   :defaultProps="{ type: 'primary' }"
   :propConfig="{
-    block: {
+    icon: {
+      type: 'select',
+      label: '图标',
+      default: '',
+      options: [
+        { label: '无', value: '' },
+        { label: 'Search', value: 'el-icon-search' },
+        { label: 'Edit', value: 'el-icon-edit' },
+        { label: 'Delete', value: 'el-icon-delete' },
+        { label: 'Plus', value: 'el-icon-plus' },
+        { label: 'Star', value: 'el-icon-star-on' }
+      ]
+    },
+    loading: {
       type: 'boolean',
-      label: '块级按钮',
+      label: '加载状态',
       default: false
     },
-    icon: {
-      type: 'string',
-      label: '图标类名',
-      default: ''
+    circle: {
+      type: 'boolean',
+      label: '圆形',
+      default: false
     }
   }"
 >
   <template #default="{ props }">
-    <HButton v-bind="props">按钮</HButton>
+    <HButton v-bind="props">
+      {{ props.circle ? '' : '按钮' }}
+    </HButton>
+  </template>
+</ComponentPlayground>
+
+## 性能优化
+
+通过 `throttle`（节流）和 `debounce`（防抖）控制高频触发场景下的回调次数。
+
+<ComponentPlayground
+  component="button"
+  :defaultProps="{ type: 'primary' }"
+  :propConfig="{
+    throttle: {
+      type: 'number',
+      label: '节流(ms)',
+      default: 0,
+      min: 0,
+      max: 3000,
+      step: 100
+    },
+    debounce: {
+      type: 'number',
+      label: '防抖(ms)',
+      default: 0,
+      min: 0,
+      max: 3000,
+      step: 100
+    }
+  }"
+  :events="['click']"
+>
+  <template #default="{ props, on }">
+    <HButton v-bind="props" @click="on('click')">快速连续点击试试</HButton>
   </template>
 </ComponentPlayground>
 
 ## 原生属性
+
+控制按钮作为原生 HTML 元素时的行为，如 `tag` 将按钮渲染为 `<a>` 或 `<div>` 等标签。
 
 <ComponentPlayground
   component="button"
@@ -156,9 +240,9 @@
       label: '原生类型',
       default: 'button',
       options: [
-        { label: 'Button', value: 'button' },
-        { label: 'Submit', value: 'submit' },
-        { label: 'Reset', value: 'reset' }
+        { label: 'button', value: 'button' },
+        { label: 'submit', value: 'submit' },
+        { label: 'reset', value: 'reset' }
       ]
     },
     autofocus: {
@@ -168,7 +252,7 @@
     },
     tag: {
       type: 'select',
-      label: '标签',
+      label: '渲染标签',
       default: 'button',
       options: [
         { label: 'button', value: 'button' },
@@ -180,74 +264,6 @@
 >
   <template #default="{ props }">
     <HButton v-bind="props">原生属性</HButton>
-  </template>
-</ComponentPlayground>
-
-## 节流防抖
-
-<ComponentPlayground
-  component="button"
-  :defaultProps="{ type: 'primary' }"
-  :propConfig="{
-    throttle: {
-      type: 'number',
-      label: '节流(ms)',
-      default: 0,
-      min: 0,
-      max: 5000
-    },
-    debounce: {
-      type: 'number',
-      label: '防抖(ms)',
-      default: 0,
-      min: 0,
-      max: 5000
-    }
-  }"
-  :events="['click']"
->
-  <template #default="{ props, on }">
-    <HButton v-bind="props" @click="on('click')">快速点击试试</HButton>
-  </template>
-</ComponentPlayground>
-
-## 涟漪颜色
-
-<ComponentPlayground
-  component="button"
-  :defaultProps="{ type: 'primary', ripple: true }"
-  :propConfig="{
-    rippleColor: {
-      type: 'select',
-      label: '涟漪颜色',
-      default: 'currentColor',
-      options: [
-        { label: '默认', value: 'currentColor' },
-        { label: '白色', value: '#ffffff' },
-        { label: '金色', value: '#fbbf24' },
-        { label: '青色', value: '#22d3d3' }
-      ]
-    },
-    glowColor: {
-      type: 'select',
-      label: '发光颜色',
-      default: '',
-      options: [
-        { label: '默认', value: '' },
-        { label: '蓝色', value: '#3b82f6' },
-        { label: '紫色', value: '#8b5cf6' },
-        { label: '粉色', value: '#ec4899' }
-      ]
-    },
-    hoverGlow: {
-      type: 'boolean',
-      label: '启用发光',
-      default: false
-    }
-  }"
->
-  <template #default="{ props }">
-    <HButton v-bind="props">颜色演示</HButton>
   </template>
 </ComponentPlayground>
 
@@ -269,15 +285,7 @@
 | block | 块级按钮 | `boolean` | — | `false` |
 | icon | 图标类名 | `string` | — | — |
 
-**原生属性**
-
-| 属性 | 说明 | 类型 | 可选值 | 默认值 |
-|------|------|------|--------|--------|
-| nativeType | 原生 type | `string` | `button` / `submit` / `reset` | `button` |
-| autofocus | 自动聚焦 | `boolean` | — | `false` |
-| tag | 自定义标签 | `string` | — | `'button'` |
-
-**动效属性**
+**动效属性（Haura 扩展）**
 
 | 属性 | 说明 | 类型 | 默认值 |
 |------|------|------|--------|
@@ -290,12 +298,20 @@
 | glass | 玻璃效果 | `boolean` | `false` |
 | gradient | 渐变背景 | `boolean` | `false` |
 
-**节流防抖**
+**性能属性**
 
 | 属性 | 说明 | 类型 | 默认值 |
 |------|------|------|--------|
-| throttle | 节流时间(ms) | `number` | `0` |
-| debounce | 防抖时间(ms) | `number` | `0` |
+| throttle | 节流时间（毫秒） | `number` | `0` |
+| debounce | 防抖时间（毫秒） | `number` | `0` |
+
+**原生属性**
+
+| 属性 | 说明 | 类型 | 可选值 | 默认值 |
+|------|------|--------|--------|--------|
+| nativeType | 原生 type | `string` | `button` / `submit` / `reset` | `button` |
+| autofocus | 自动聚焦 | `boolean` | — | `false` |
+| tag | 自定义渲染标签 | `string` | `button` / `a` / `div` / … | `'button'` |
 
 ### Events
 
