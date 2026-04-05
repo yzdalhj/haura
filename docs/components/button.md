@@ -11,7 +11,7 @@
     type: {
       type: 'select',
       label: '按钮类型',
-      default: 'default',
+      default: 'primary',
       options: [
         { label: 'Default', value: 'default' },
         { label: 'Primary', value: 'primary' },
@@ -19,36 +19,28 @@
         { label: 'Warning', value: 'warning' },
         { label: 'Danger', value: 'danger' },
         { label: 'Info', value: 'info' },
+        { label: 'Text', value: 'text' },
+        { label: 'Link', value: 'link' }
       ]
     },
     size: {
       type: 'select',
-      label: '按钮尺寸',
+      label: '尺寸',
       default: 'default',
       options: [
         { label: 'Small', value: 'small' },
         { label: 'Default', value: 'default' },
-        { label: 'Large', value: 'large' },
+        { label: 'Large', value: 'large' }
       ]
     },
     disabled: {
       type: 'boolean',
-      label: '禁用状态',
+      label: '禁用',
       default: false
     },
     loading: {
       type: 'boolean',
-      label: '加载状态',
-      default: false
-    },
-    round: {
-      type: 'boolean',
-      label: '圆角按钮',
-      default: false
-    },
-    block: {
-      type: 'boolean',
-      label: '块级按钮',
+      label: '加载中',
       default: false
     }
   }"
@@ -61,79 +53,84 @@
 
 ## 按钮类型
 
-不同的按钮类型代表不同的操作意图。
-
 <ComponentPlayground
   component="button"
-  :defaultProps="{}"
 >
   <template #default>
-    <HButton>默认按钮</HButton>
-    <HButton type="primary">主要按钮</HButton>
-    <HButton type="success">成功按钮</HButton>
-    <HButton type="warning">警告按钮</HButton>
-    <HButton type="danger">危险按钮</HButton>
-    <HButton type="info">信息按钮</HButton>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+      <HButton>默认</HButton>
+      <HButton type="primary">主要</HButton>
+      <HButton type="success">成功</HButton>
+      <HButton type="warning">警告</HButton>
+      <HButton type="danger">危险</HButton>
+      <HButton type="info">信息</HButton>
+      <HButton type="text">文字</HButton>
+      <HButton type="link">链接</HButton>
+    </div>
   </template>
 </ComponentPlayground>
 
-## 按钮尺寸
-
-提供三种尺寸：`small`、`default`、`large`。
+## 按钮形状
 
 <ComponentPlayground
   component="button"
-  :defaultProps="{}"
 >
   <template #default>
-    <HButton size="small" type="primary">小型按钮</HButton>
-    <HButton type="primary">默认按钮</HButton>
-    <HButton size="large" type="primary">大型按钮</HButton>
-  </template>
-</ComponentPlayground>
-
-## 加载状态
-
-通过 `loading` 属性设置按钮加载状态。
-
-<ComponentPlayground
-  component="button"
-  :propConfig="{
-    loading: {
-      type: 'boolean',
-      label: '加载状态',
-      default: false
-    }
-  }"
->
-  <template #default="{ props }">
-    <HButton type="primary" v-bind="props">加载按钮</HButton>
+    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+      <HButton type="primary" plain>朴素按钮</HButton>
+      <HButton type="primary" round>圆角按钮</HButton>
+      <HButton type="primary" circle icon="plus" />
+      <HButton type="primary" circle>✓</HButton>
+    </div>
   </template>
 </ComponentPlayground>
 
 ## 动效配置
 
-Haura Button 内置多种动效，可通过 `effect` 属性配置。
-
 <ComponentPlayground
   component="button"
   :propConfig="{
-    effect: {
-      type: 'select',
-      label: '动效类型',
-      default: 'ripple',
-      options: [
-        { label: '涟漪效果', value: 'ripple' },
-        { label: '光效效果', value: 'glow' },
-        { label: '玻璃效果', value: 'glass' },
-        { label: '渐变效果', value: 'gradient' },
-        { label: '无效果', value: 'none' },
-      ]
+    glass: {
+      type: 'boolean',
+      label: '玻璃效果',
+      default: false
+    },
+    gradient: {
+      type: 'boolean',
+      label: '渐变背景',
+      default: false
+    },
+    hoverGlow: {
+      type: 'boolean',
+      label: '悬停发光',
+      default: false
+    },
+    ripple: {
+      type: 'boolean',
+      label: '涟漪效果',
+      default: true
     }
   }"
 >
   <template #default="{ props }">
     <HButton type="primary" v-bind="props">动效演示</HButton>
+  </template>
+</ComponentPlayground>
+
+## 块级按钮
+
+<ComponentPlayground
+  component="button"
+  :propConfig="{
+    block: {
+      type: 'boolean',
+      label: '块级按钮',
+      default: false
+    }
+  }"
+>
+  <template #default="{ props }">
+    <HButton type="primary" v-bind="props">块级按钮</HButton>
   </template>
 </ComponentPlayground>
 
@@ -143,24 +140,50 @@ Haura Button 内置多种动效，可通过 `effect` 属性配置。
 
 | 属性 | 说明 | 类型 | 可选值 | 默认值 |
 |------|------|------|--------|--------|
-| type | 按钮类型 | `string` | `default` / `primary` / `success` / `warning` / `danger` / `info` | `default` |
+| type | 按钮类型 | `string` | `default` / `primary` / `success` / `warning` / `danger` / `info` / `text` / `link` | `default` |
 | size | 按钮尺寸 | `string` | `small` / `default` / `large` | `default` |
-| disabled | 是否禁用 | `boolean` | — | `false` |
-| loading | 是否加载中 | `boolean` | — | `false` |
-| icon | 图标名称 | `string` | — | — |
-| effect | 动效类型 | `string` | `ripple` / `glow` / `glass` / `gradient` / `none` | `ripple` |
-| effectDuration | 动效时长 | `number` | — | `600` |
+| disabled | 禁用状态 | `boolean` | — | `false` |
+| loading | 加载状态 | `boolean` | — | `false` |
 | plain | 朴素按钮 | `boolean` | — | `false` |
 | round | 圆角按钮 | `boolean` | — | `false` |
 | circle | 圆形按钮 | `boolean` | — | `false` |
-| nativeType | 原生 type 属性 | `string` | `button` / `submit` / `reset` | `button` |
-| block | 宽度撑满父容器 | `boolean` | — | `false` |
+| block | 块级按钮 | `boolean` | — | `false` |
+| icon | 图标类名 | `string` | — | — |
+| nativeType | 原生 type | `string` | `button` / `submit` / `reset` | `button` |
+| autofocus | 自动聚焦 | `boolean` | — | `false` |
+| tag | 自定义标签 | `string` | — | `'button'` |
+
+**动效相关 Props**
+
+| 属性 | 说明 | 类型 | 默认值 |
+|------|------|------|--------|
+| ripple | 涟漪效果 | `boolean` | `true` |
+| rippleColor | 涟漪颜色 | `string` | `'currentColor'` |
+| hoverLift | 悬停上浮 | `boolean` | `true` |
+| hoverGlow | 悬停发光 | `boolean` | `false` |
+| pressScale | 点击缩放 | `boolean` | `true` |
+| glowColor | 发光颜色 | `string` | — |
+| glass | 玻璃效果 | `boolean` | `false` |
+| gradient | 渐变背景 | `boolean` | `false` |
+
+**节流防抖 Props**
+
+| 属性 | 说明 | 类型 | 默认值 |
+|------|------|------|--------|
+| throttle | 节流时间(ms) | `number` | `0` |
+| debounce | 防抖时间(ms) | `number` | `0` |
 
 ### Events
 
 | 事件名 | 说明 | 回调参数 |
 |--------|------|----------|
-| click | 点击按钮时触发 | `(event: MouseEvent)` |
+| click | 点击时触发 | `(event: MouseEvent)` |
+| mousedown | 鼠标按下 | `(event: MouseEvent)` |
+| mouseup | 鼠标释放 | `(event: MouseEvent)` |
+| mouseenter | 鼠标移入 | `(event: MouseEvent)` |
+| mouseleave | 鼠标移出 | `(event: MouseEvent)` |
+| focus | 获得焦点 | `(event: FocusEvent)` |
+| blur | 失去焦点 | `(event: FocusEvent)` |
 
 ### Slots
 
@@ -168,3 +191,4 @@ Haura Button 内置多种动效，可通过 `effect` 属性配置。
 |--------|------|
 | default | 按钮内容 |
 | icon | 自定义图标 |
+| loading | 自定义加载图标 |
