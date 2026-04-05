@@ -26,55 +26,15 @@
   </template>
 </ComponentPlayground>
 
-## 基础用法
-
-<ComponentPlayground
-  component="dialog"
->
-  <template #default>
-    <HButton type="primary" @click="dialog2Visible = true">打开对话框</HButton>
-    <HDialog
-      v-model="dialog2Visible"
-      title="提示"
-      width="400px"
-    >
-      <p>这是一段信息</p>
-      <template #footer>
-        <HButton @click="dialog2Visible = false">取消</HButton>
-        <HButton type="primary" @click="dialog2Visible = false">确定</HButton>
-      </template>
-    </HDialog>
-  </template>
-</ComponentPlayground>
-
-## 自定义宽度
-
-<ComponentPlayground
-  component="dialog"
->
-  <template #default>
-    <HButton @click="dialog3Visible = true">小尺寸</HButton>
-    <HButton @click="dialog4Visible = true">大尺寸</HButton>
-    
-    <HDialog v-model="dialog3Visible" title="小对话框" width="300px">
-      <p>宽度 300px</p>
-    </HDialog>
-    
-    <HDialog v-model="dialog4Visible" title="大对话框" width="600px">
-      <p>宽度 600px</p>
-    </HDialog>
-  </template>
-</ComponentPlayground>
-
 ## 玻璃效果
 
 <ComponentPlayground
   component="dialog"
 >
   <template #default>
-    <HButton type="primary" @click="glassDialogVisible = true">玻璃对话框</HButton>
+    <HButton @click="glassVisible = true">玻璃对话框</HButton>
     <HDialog
-      v-model="glassDialogVisible"
+      v-model="glassVisible"
       title="玻璃效果"
       glass
       width="400px"
@@ -83,6 +43,22 @@
     </HDialog>
   </template>
 </ComponentPlayground>
+
+## 指令式调用
+
+```ts
+import { useDialog } from 'haura-ui'
+
+const dialog = useDialog()
+
+dialog.confirm({
+  title: '确认删除?',
+  content: '删除后将无法恢复',
+  onConfirm: () => {
+    console.log('确认删除')
+  }
+})
+```
 
 ## API
 

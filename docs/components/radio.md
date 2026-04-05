@@ -38,7 +38,7 @@
   </template>
 </ComponentPlayground>
 
-## 基础用法
+## 单选组
 
 <ComponentPlayground
   component="radio"
@@ -50,29 +50,6 @@
       <HRadio v-model="radio" label="选项三" />
     </div>
     <p style="margin-top: 12px; color: var(--vp-c-text-2);">当前选中: {{ radio || '无' }}</p>
-  </template>
-</ComponentPlayground>
-
-## 禁用状态
-
-<ComponentPlayground
-  component="radio"
->
-  <template #default>
-    <HRadio v-model="radio2" disabled label="禁用选项" />
-    <HRadio :modelValue="'选中禁用'" disabled label="选中禁用" />
-  </template>
-</ComponentPlayground>
-
-## 边框样式
-
-<ComponentPlayground
-  component="radio"
->
-  <template #default>
-    <HRadio v-model="radio3" label="选项一" bordered />
-    <HRadio v-model="radio3" label="选项二" bordered />
-    <HRadio v-model="radio3" label="选项三" bordered />
   </template>
 </ComponentPlayground>
 

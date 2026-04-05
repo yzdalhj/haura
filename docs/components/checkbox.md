@@ -39,47 +39,15 @@
   </template>
 </ComponentPlayground>
 
-## 基础用法
+## 多选组
 
 <ComponentPlayground
   component="checkbox"
 >
   <template #default>
-    <HCheckbox v-model="checked" label="选项一" />
+    <HCheckbox v-model="checked1" label="选项一" />
     <HCheckbox v-model="checked2" label="选项二" />
-  </template>
-</ComponentPlayground>
-
-## 禁用状态
-
-<ComponentPlayground
-  component="checkbox"
->
-  <template #default>
-    <HCheckbox v-model="checked3" disabled label="未选中禁用" />
-    <HCheckbox :modelValue="true" disabled label="选中禁用" />
-  </template>
-</ComponentPlayground>
-
-## 半选状态
-
-<ComponentPlayground
-  component="checkbox"
->
-  <template #default>
-    <HCheckbox :modelValue="false" indeterminate label="半选状态" />
-  </template>
-</ComponentPlayground>
-
-## 边框样式
-
-<ComponentPlayground
-  component="checkbox"
->
-  <template #default>
-    <HCheckbox v-model="checked4" bordered label="选项一" />
-    <HCheckbox v-model="checked5" bordered label="选项二" />
-    <HCheckbox v-model="checked6" bordered disabled label="禁用" />
+    <HCheckbox v-model="checked3" label="选项三" />
   </template>
 </ComponentPlayground>
 

@@ -2,7 +2,7 @@
 
 用于展示多条结构类似的数据，可对数据进行排序、筛选、分页等操作。
 
-## 基础用法
+## 交互演示
 
 <ComponentPlayground
   component="table"
@@ -12,23 +12,13 @@
   </template>
 </ComponentPlayground>
 
-## 带斑马纹
+## 斑马纹和边框
 
 <ComponentPlayground
   component="table"
 >
   <template #default>
-    <HTable :data="tableData" :columns="columns" stripe style="width: 100%;" />
-  </template>
-</ComponentPlayground>
-
-## 带边框
-
-<ComponentPlayground
-  component="table"
->
-  <template #default>
-    <HTable :data="tableData" :columns="columns" border style="width: 100%;" />
+    <HTable :data="tableData" :columns="columns" stripe border style="width: 100%;" />
   </template>
 </ComponentPlayground>
 

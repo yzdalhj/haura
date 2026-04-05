@@ -42,19 +42,7 @@
   </template>
 </ComponentPlayground>
 
-## 基础用法
-
-<ComponentPlayground
-  component="card"
->
-  <template #default>
-    <HCard title="卡片标题" style="width: 300px;">
-      <p>卡片内容</p>
-    </HCard>
-  </template>
-</ComponentPlayground>
-
-## 带图片
+## 带图片和底部
 
 <ComponentPlayground
   component="card"
@@ -69,20 +57,6 @@
         <HButton size="small" type="primary">操作</HButton>
       </template>
     </HCard>
-  </template>
-</ComponentPlayground>
-
-## 玻璃效果
-
-<ComponentPlayground
-  component="card"
->
-  <template #default>
-    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px;">
-      <HCard title="玻璃卡片" glass style="width: 300px;">
-        <p>毛玻璃效果</p>
-      </HCard>
-    </div>
   </template>
 </ComponentPlayground>
 

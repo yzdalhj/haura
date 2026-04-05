@@ -39,44 +39,16 @@
   </template>
 </ComponentPlayground>
 
-## 基础用法
+## 禁用标签
 
 <ComponentPlayground
   component="tabs"
 >
   <template #default>
-    <HTabs v-model="activeTab1">
-      <HTabPane label="标签一" name="first">内容一</HTabPane>
-      <HTabPane label="标签二" name="second">内容二</HTabPane>
-      <HTabPane label="标签三" name="third">内容三</HTabPane>
-    </HTabs>
-  </template>
-</ComponentPlayground>
-
-## 卡片样式
-
-<ComponentPlayground
-  component="tabs"
->
-  <template #default>
-    <HTabs type="card" v-model="activeTab2">
-      <HTabPane label="标签一" name="first">内容一</HTabPane>
-      <HTabPane label="标签二" name="second">内容二</HTabPane>
-      <HTabPane label="标签三" name="third">内容三</HTabPane>
-    </HTabs>
-  </template>
-</ComponentPlayground>
-
-## 分段样式
-
-<ComponentPlayground
-  component="tabs"
->
-  <template #default>
-    <HTabs type="segment" v-model="activeTab3">
-      <HTabPane label="日" name="day">日视图</HTabPane>
-      <HTabPane label="周" name="week">周视图</HTabPane>
-      <HTabPane label="月" name="month">月视图</HTabPane>
+    <HTabs v-model="activeTab2">
+      <HTabPane label="可点击" name="first">内容一</HTabPane>
+      <HTabPane label="已禁用" name="second" disabled>内容二</HTabPane>
+      <HTabPane label="可点击" name="third">内容三</HTabPane>
     </HTabs>
   </template>
 </ComponentPlayground>

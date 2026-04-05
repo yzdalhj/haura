@@ -23,63 +23,24 @@
   </template>
 </ComponentPlayground>
 
-## 基础用法
-
-<ComponentPlayground
-  component="drawer"
->
-  <template #default>
-    <HButton type="primary" @click="drawer2Visible = true">打开抽屉</HButton>
-    <HDrawer
-      v-model="drawer2Visible"
-      title="基础抽屉"
-      size="360px"
-    >
-      <p>这是抽屉的内容</p>
-    </HDrawer>
-  </template>
-</ComponentPlayground>
-
 ## 不同方向
 
 <ComponentPlayground
   component="drawer"
 >
   <template #default>
-    <HButton @click="direction = 'left'; drawer3Visible = true">从左</HButton>
-    <HButton @click="direction = 'right'; drawer3Visible = true">从右</HButton>
-    <HButton @click="direction = 'top'; drawer3Visible = true">从上</HButton>
-    <HButton @click="direction = 'bottom'; drawer3Visible = true">从下</HButton>
+    <HButton @click="direction = 'left'; dirVisible = true">从左</HButton>
+    <HButton @click="direction = 'right'; dirVisible = true">从右</HButton>
+    <HButton @click="direction = 'top'; dirVisible = true">从上</HButton>
+    <HButton @click="direction = 'bottom'; dirVisible = true">从下</HButton>
     
     <HDrawer
-      v-model="drawer3Visible"
+      v-model="dirVisible"
       :direction="direction"
       title="方向演示"
       size="360px"
     >
       <p>当前方向: {{ direction }}</p>
-    </HDrawer>
-  </template>
-</ComponentPlayground>
-
-## 带底部
-
-<ComponentPlayground
-  component="drawer"
->
-  <template #default>
-    <HButton type="primary" @click="drawer4Visible = true">带底部抽屉</HButton>
-    <HDrawer
-      v-model="drawer4Visible"
-      title="操作确认"
-      size="400px"
-      showFooter
-    >
-      <p>请确认您的操作</p>
-      <template #footer>
-        <HButton @click="drawer4Visible = false">取消</HButton>
-        <HButton type="primary" @click="drawer4Visible = false">确定</HButton>
-      </template>
     </HDrawer>
   </template>
 </ComponentPlayground>

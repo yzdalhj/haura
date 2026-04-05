@@ -57,64 +57,17 @@
   </template>
 </ComponentPlayground>
 
-## 基础用法
+## 组合使用
 
 <ComponentPlayground
   component="tag"
 >
   <template #default>
-    <HTag>默认标签</HTag>
-    <HTag type="primary">主要标签</HTag>
-    <HTag type="success">成功标签</HTag>
-    <HTag type="warning">警告标签</HTag>
-    <HTag type="danger">危险标签</HTag>
-  </template>
-</ComponentPlayground>
-
-## 可关闭
-
-<ComponentPlayground
-  component="tag"
->
-  <template #default>
-    <HTag closable>可关闭</HTag>
-    <HTag closable type="primary">可关闭</HTag>
-    <HTag closable type="success">可关闭</HTag>
-  </template>
-</ComponentPlayground>
-
-## 不同尺寸
-
-<ComponentPlayground
-  component="tag"
->
-  <template #default>
-    <HTag size="small">小型标签</HTag>
-    <HTag>默认标签</HTag>
-    <HTag size="large">大型标签</HTag>
-  </template>
-</ComponentPlayground>
-
-## 朴素样式
-
-<ComponentPlayground
-  component="tag"
->
-  <template #default>
+    <HTag type="primary">主要</HTag>
+    <HTag type="success">成功</HTag>
+    <HTag type="warning" closable>可关闭</HTag>
+    <HTag type="danger" round>圆角</HTag>
     <HTag plain>朴素</HTag>
-    <HTag type="primary" plain>朴素</HTag>
-    <HTag type="success" plain>朴素</HTag>
-  </template>
-</ComponentPlayground>
-
-## 圆角样式
-
-<ComponentPlayground
-  component="tag"
->
-  <template #default>
-    <HTag round>圆角标签</HTag>
-    <HTag round type="primary">圆角标签</HTag>
   </template>
 </ComponentPlayground>
 

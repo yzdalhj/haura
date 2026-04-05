@@ -2,7 +2,7 @@
 
 由输入框、选择器、单选框、多选框等控件组成，用于收集、校验和提交数据。
 
-## 基础用法
+## 交互演示
 
 <ComponentPlayground
   component="form"
@@ -22,7 +22,6 @@
       <HFormItem label="爱好">
         <HCheckbox v-model="formData.hobbies" label="reading">阅读</HCheckbox>
         <HCheckbox v-model="formData.hobbies" label="sports">运动</HCheckbox>
-        <HCheckbox v-model="formData.hobbies" label="music">音乐</HCheckbox>
       </HFormItem>
       <HFormItem>
         <HButton type="primary">提交</HButton>

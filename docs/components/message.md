@@ -14,42 +14,8 @@
       <HButton type="success" @click="$message.success('操作成功')">成功</HButton>
       <HButton type="warning" @click="$message.warning('警告提示')">警告</HButton>
       <HButton type="danger" @click="$message.error('发生错误')">错误</HButton>
-      <HButton type="info" @click="$message.info('信息提示')">信息</HButton>
+      <HButton @click="$message({ message: '可关闭', showClose: true })">可关闭</HButton>
     </div>
-  </template>
-</ComponentPlayground>
-
-## 基础用法
-
-<ComponentPlayground
-  component="message"
->
-  <template #default>
-    <HButton @click="$message('这是一条消息提示')">打开消息</HButton>
-  </template>
-</ComponentPlayground>
-
-## 不同类型
-
-<ComponentPlayground
-  component="message"
->
-  <template #default>
-    <div style="display: flex; gap: 12px;">
-      <HButton @click="$message.success('恭喜你，操作成功！')">成功</HButton>
-      <HButton @click="$message.warning('请注意，这是一条警告')">警告</HButton>
-      <HButton @click="$message.error('抱歉，操作失败')">错误</HButton>
-    </div>
-  </template>
-</ComponentPlayground>
-
-## 可关闭
-
-<ComponentPlayground
-  component="message"
->
-  <template #default>
-    <HButton @click="$message({ message: '点击关闭按钮关闭', showClose: true })">可关闭</HButton>
   </template>
 </ComponentPlayground>
 

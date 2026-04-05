@@ -52,47 +52,15 @@
   </template>
 </ComponentPlayground>
 
-## 基础用法
+## 指令用法
 
-<ComponentPlayground
-  component="loading"
->
-  <template #default>
-    <div style="height: 200px; position: relative; border: 1px solid var(--vp-c-divider); border-radius: 8px;">
-      <HLoading :visible="true" />
-    </div>
-  </template>
-</ComponentPlayground>
-
-## 不同尺寸
-
-<ComponentPlayground
-  component="loading"
->
-  <template #default>
-    <div style="display: flex; gap: 32px; align-items: center;">
-      <HLoading :visible="true" size="small" />
-      <HLoading :visible="true" />
-      <HLoading :visible="true" size="large" />
-    </div>
-  </template>
-</ComponentPlayground>
-
-## 不同类型
-
-<ComponentPlayground
-  component="loading"
->
-  <template #default>
-    <div style="display: flex; gap: 32px; align-items: center;">
-      <HLoading :visible="true" type="spinner" />
-      <HLoading :visible="true" type="dots" />
-      <HLoading :visible="true" type="pulse" />
-      <HLoading :visible="true" type="bars" />
-      <HLoading :visible="true" type="ring" />
-    </div>
-  </template>
-</ComponentPlayground>
+```vue
+<template>
+  <div v-loading="loading" loading-text="加载中...">
+    内容区域
+  </div>
+</template>
+```
 
 ## API
 
