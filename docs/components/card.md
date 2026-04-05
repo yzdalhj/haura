@@ -2,60 +2,89 @@
 
 通用卡片容器。
 
+## 交互演示
+
+<ComponentPlayground
+  component="card"
+  :defaultProps="{ title: '卡片标题', bordered: true, hoverable: true }"
+  :propConfig="{
+    title: {
+      type: 'string',
+      label: '标题',
+      default: '卡片标题'
+    },
+    bordered: {
+      type: 'boolean',
+      label: '边框',
+      default: true
+    },
+    hoverable: {
+      type: 'boolean',
+      label: '悬停效果',
+      default: true
+    },
+    glass: {
+      type: 'boolean',
+      label: '玻璃效果',
+      default: false
+    },
+    glow: {
+      type: 'boolean',
+      label: '发光效果',
+      default: false
+    }
+  }"
+>
+  <template #default="{ props }">
+    <HCard v-bind="props" style="width: 300px;">
+      <p>卡片内容区域</p>
+    </HCard>
+  </template>
+</ComponentPlayground>
+
 ## 基础用法
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HCard title="卡片标题">
+<ComponentPlayground
+  component="card"
+>
+  <template #default>
+    <HCard title="卡片标题" style="width: 300px;">
       <p>卡片内容</p>
     </HCard>
-  </div>
-</template>
-:::
+  </template>
+</ComponentPlayground>
 
 ## 带图片
 
-:::demo
-<template>
-  <div class="demo-block">
-    <HCard>
-      <img src="https://picsum.photos/400/200" alt="card image" style="width: 100%;" />
+<ComponentPlayground
+  component="card"
+>
+  <template #default>
+    <HCard style="width: 300px;">
+      <template #cover>
+        <img src="https://picsum.photos/400/200" alt="card image" style="width: 100%;" />
+      </template>
+      <p>卡片内容</p>
       <template #footer>
-        <HButton size="small">操作</HButton>
+        <HButton size="small" type="primary">操作</HButton>
       </template>
     </HCard>
-  </div>
-</template>
-:::
-
-## 悬停效果
-
-使用 `hoverable` 属性显示悬停效果。
-
-:::demo
-<template>
-  <div class="demo-block">
-    <HCard title="悬停卡片" hoverable>
-      <p>鼠标悬停查看效果</p>
-    </HCard>
-  </div>
-</template>
-:::
+  </template>
+</ComponentPlayground>
 
 ## 玻璃效果
 
-使用 `glass` 属性显示玻璃效果。
-
-:::demo
-<template>
-  <div class="demo-block" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px;">
-    <HCard title="玻璃卡片" glass>
-      <p style="color: #333;">毛玻璃效果</p>
-    </HCard>
-  </div>
-</template>
-:::
+<ComponentPlayground
+  component="card"
+>
+  <template #default>
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px;">
+      <HCard title="玻璃卡片" glass style="width: 300px;">
+        <p>毛玻璃效果</p>
+      </HCard>
+    </div>
+  </template>
+</ComponentPlayground>
 
 ## API
 
@@ -64,11 +93,13 @@
 | 属性 | 说明 | 类型 | 默认值 |
 |------|------|------|--------|
 | title | 卡片标题 | `string` | — |
-| header | 是否显示头部 | `boolean` | `true` |
-| shadow | 阴影时机 | `string` | `always` |
-| hoverable | 悬停效果 | `boolean` | `false` |
+| extra | 标题右侧内容 | `string` | — |
+| bordered | 显示边框 | `boolean` | `true` |
+| hoverable | 悬停效果 | `boolean` | `true` |
 | glass | 玻璃效果 | `boolean` | `false` |
-| loading | 加载状态 | `boolean` | `false` |
+| glow | 发光效果 | `boolean` | `false` |
+| padding | 内容区内边距 | `string` / `number` | — |
+| size | 尺寸 | `string` | `default` |
 
 ### Slots
 
@@ -77,4 +108,4 @@
 | default | 卡片内容 |
 | header | 自定义头部 |
 | footer | 自定义底部 |
-| extra | 头部额外内容 |
+| cover | 封面图片 |

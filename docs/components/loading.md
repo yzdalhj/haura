@@ -2,26 +2,97 @@
 
 加载数据时显示的加载状态。
 
+## 交互演示
+
+<ComponentPlayground
+  component="loading"
+  :defaultProps="{ modelValue: true, type: 'spinner', text: '加载中...' }"
+  :propConfig="{
+    modelValue: {
+      type: 'boolean',
+      label: '显示',
+      default: true
+    },
+    type: {
+      type: 'select',
+      label: '类型',
+      default: 'spinner',
+      options: [
+        { label: 'Spinner', value: 'spinner' },
+        { label: 'Dots', value: 'dots' },
+        { label: 'Pulse', value: 'pulse' },
+        { label: 'Bars', value: 'bars' },
+        { label: 'Ring', value: 'ring' }
+      ]
+    },
+    size: {
+      type: 'select',
+      label: '尺寸',
+      default: 'default',
+      options: [
+        { label: 'Small', value: 'small' },
+        { label: 'Default', value: 'default' },
+        { label: 'Large', value: 'large' }
+      ]
+    },
+    text: {
+      type: 'string',
+      label: '文字',
+      default: '加载中...'
+    }
+  }"
+>
+  <template #default="{ props }">
+    <div style="height: 200px; position: relative; border: 1px solid var(--vp-c-divider); border-radius: 8px;">
+      <HLoading v-bind="props" :visible="props.modelValue" />
+      <div v-if="!props.modelValue" style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--vp-c-text-2);">
+        加载完成
+      </div>
+    </div>
+  </template>
+</ComponentPlayground>
+
 ## 基础用法
 
+<ComponentPlayground
+  component="loading"
+>
+  <template #default>
+    <div style="height: 200px; position: relative; border: 1px solid var(--vp-c-divider); border-radius: 8px;">
+      <HLoading :visible="true" />
+    </div>
+  </template>
+</ComponentPlayground>
 
 ## 不同尺寸
 
+<ComponentPlayground
+  component="loading"
+>
+  <template #default>
+    <div style="display: flex; gap: 32px; align-items: center;">
+      <HLoading :visible="true" size="small" />
+      <HLoading :visible="true" />
+      <HLoading :visible="true" size="large" />
+    </div>
+  </template>
+</ComponentPlayground>
 
-## 文字描述
+## 不同类型
 
-使用 `text` 属性显示文字描述。
-
-
-## 指令用法
-
-使用 `v-loading` 指令在元素上显示加载状态。
-
-
-## 全屏加载
-
-使用 `fullscreen` 属性全屏显示。
-
+<ComponentPlayground
+  component="loading"
+>
+  <template #default>
+    <div style="display: flex; gap: 32px; align-items: center;">
+      <HLoading :visible="true" type="spinner" />
+      <HLoading :visible="true" type="dots" />
+      <HLoading :visible="true" type="pulse" />
+      <HLoading :visible="true" type="bars" />
+      <HLoading :visible="true" type="ring" />
+    </div>
+  </template>
+</ComponentPlayground>
 
 ## API
 
@@ -29,9 +100,11 @@
 
 | 属性 | 说明 | 类型 | 默认值 |
 |------|------|------|--------|
+| visible / modelValue | 是否显示 | `boolean` | `false` |
 | type | 加载类型 | `string` | `spinner` |
 | size | 尺寸 | `string` | `default` |
 | text | 文字描述 | `string` | — |
+| textPosition | 文字位置 | `string` | `bottom` |
 | color | 颜色 | `string` | — |
 | background | 背景色 | `string` | — |
 | fullscreen | 全屏显示 | `boolean` | `false` |
@@ -43,18 +116,3 @@
 | v-loading | 是否显示 | `boolean` |
 | loading-text | 文字描述 | `string` |
 | loading-background | 背景色 | `string` |
-| loading-type | 加载类型 | `string` |
-
-### Service
-
-```ts
-import { loadingService } from '@haura/components'
-
-const loading = loadingService({
-  fullscreen: true,
-  text: '加载中...',
-  type: 'spinner',
-})
-
-loading.close() // 关闭
-```
