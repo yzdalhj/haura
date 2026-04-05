@@ -4,6 +4,34 @@
   --haura-primary: #0ea5e9;
   --haura-primary-light: #38bdf8;
   --haura-primary-dark: #0284c7;
+
+  /* Haura 组件库 CSS 变量 */
+  --aura-color-primary-50: #f0f9ff;
+  --aura-color-primary-100: #e0f2fe;
+  --aura-color-primary-200: #bae6fd;
+  --aura-color-primary-300: #7dd3fc;
+  --aura-color-primary-400: #38bdf8;
+  --aura-color-primary-500: #0ea5e9;
+  --aura-color-primary-600: #0284c7;
+  --aura-color-primary-700: #0369a1;
+  --aura-color-primary-800: #075985;
+  --aura-color-primary-900: #0c4a6e;
+
+  --aura-color-success-500: #22c55e;
+  --aura-color-success-600: #16a34a;
+
+  --aura-color-warning-500: #f59e0b;
+  --aura-color-warning-600: #d97706;
+
+  --aura-color-danger-500: #ef4444;
+  --aura-color-danger-600: #dc2626;
+
+  --aura-color-info-500: #38bdf8;
+  --aura-color-info-600: #0284c7;
+
+  --aura-border-default: #e5e5e5;
+  --aura-text-primary: #171717;
+  --aura-glow-primary: rgba(14, 165, 233, 0.3);
 }
 
 /* 组件演示区块 */

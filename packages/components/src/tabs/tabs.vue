@@ -118,15 +118,12 @@
         mode="out-in"
       >
         <div
-          v-show="currentPane?.name === modelValue"
-          v-for="pane in panes"
-          :key="pane.name"
-          v-if="!pane.lazy || pane.name === modelValue || renderedPanes.has(pane.name)"
+          v-if="currentPane && (!currentPane.lazy || currentPane.name === modelValue || renderedPanes.has(currentPane.name))"
+          :key="currentPane.name"
           class="h-tabs__pane"
           role="tabpanel"
-          :aria-hidden="pane.name !== modelValue"
         >
-          <slot :name="pane.name" :pane="pane" />
+          <slot :name="currentPane.name" :pane="currentPane" />
         </div>
       </Transition>
       <slot />

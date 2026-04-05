@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, shallowRef, h, type Component } from 'vue'
+import { reactive, ref, computed, watch, onMounted, shallowRef, h, toRaw, type Component } from 'vue'
 
 // 直接导入本地组件
 import HButton from '../../../packages/components/src/button/button.vue'
@@ -67,16 +67,19 @@ const currentProps = ref<Record<string, any>>({})
 const eventLogs = ref<{ event: string; args: any[]; time: Date }[]>([])
 
 // 控制值
-const controlValues = ref<Record<string, any>>({})
+const controlValues = reactive<Record<string, any>>({})
+
+// 最终 props（computed，响应式合并 defaultProps + controlValues）
+const mergedProps = computed(() => ({
+  ...(props.defaultProps || {}),
+  ...controlValues,
+}))
 
 // 初始化
 const init = () => {
-  if (props.defaultProps) {
-    currentProps.value = { ...props.defaultProps }
-  }
   if (props.propConfig) {
     for (const [key, config] of Object.entries(props.propConfig)) {
-      controlValues.value[key] = (config as any).value ?? (config as any).default
+      controlValues[key] = (config as any).value ?? (config as any).default
     }
   }
 }
@@ -123,7 +126,7 @@ const formatArgs = (args: any[]) => {
 
 // 监听控制值变化
 watch(controlValues, (val) => {
-  currentProps.value = { ...currentProps.value, ...val }
+  currentProps.value = { ...props.defaultProps || {}, ...val }
 }, { deep: true })
 
 onMounted(() => {
@@ -136,11 +139,11 @@ onMounted(() => {
     <!-- 预览区域 -->
     <div class="playground-preview">
       <div class="preview-content">
-        <slot :props="{ ...currentProps, ...controlValues }" :on="createEventHandler">
+        <slot :props="mergedProps" :on="createEventHandler">
           <component
             :is="ComponentDemo"
             v-if="ComponentDemo"
-            v-bind="{ ...currentProps, ...controlValues }"
+            v-bind="mergedProps"
           >
             <template v-for="(content, slotName) in slots" :key="slotName" #[slotName]>
               {{ content }}
@@ -167,14 +170,22 @@ onMounted(() => {
           <!-- 布尔类型 -->
           <template v-if="config.type === 'boolean'">
             <label class="toggle-switch">
-              <input type="checkbox" v-model="controlValues[key]" />
+              <input
+                type="checkbox"
+                :checked="controlValues[key]"
+                @change="controlValues[key] = ($event.target as HTMLInputElement).checked"
+              />
               <span class="toggle-slider"></span>
             </label>
           </template>
 
           <!-- 选择类型 -->
           <template v-else-if="config.type === 'select'">
-            <select v-model="controlValues[key]" class="control-select">
+            <select
+              class="control-select"
+              :value="controlValues[key]"
+              @input="controlValues[key] = ($event.target as HTMLSelectElement).value"
+            >
               <option v-for="opt in config.options" :key="opt.value" :value="opt.value">
                 {{ opt.label }}
               </option>
@@ -186,7 +197,8 @@ onMounted(() => {
             <div class="control-number-group">
               <input
                 type="range"
-                v-model.number="controlValues[key]"
+                :value="controlValues[key]"
+                @input="controlValues[key] = Number(($event.target as HTMLInputElement).value)"
                 :min="config.min ?? 0"
                 :max="config.max ?? 100"
                 :step="config.step ?? 1"
@@ -194,7 +206,8 @@ onMounted(() => {
               />
               <input
                 type="number"
-                v-model.number="controlValues[key]"
+                :value="controlValues[key]"
+                @input="controlValues[key] = Number(($event.target as HTMLInputElement).value)"
                 :min="config.min"
                 :max="config.max"
                 class="control-number"
@@ -206,7 +219,8 @@ onMounted(() => {
           <template v-else>
             <input
               type="text"
-              v-model="controlValues[key]"
+              :value="controlValues[key]"
+              @input="controlValues[key] = ($event.target as HTMLInputElement).value"
               class="control-input"
             />
           </template>

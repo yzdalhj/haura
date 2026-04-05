@@ -165,6 +165,18 @@ const handleBlur = (evt: FocusEvent) => {
   border-radius: 4px;
 }
 
+/* 类型 - 默认（基础样式，白底放在最前，让其他类型覆盖它）*/
+.h-button--default {
+  background-color: white;
+  color: var(--aura-text-primary);
+  border-color: var(--aura-border-default);
+}
+
+.h-button--default:hover:not(.is-disabled) {
+  border-color: var(--aura-color-primary-500);
+  color: var(--aura-color-primary-500);
+}
+
 /* 类型 - 主要 */
 .h-button--primary {
   background-color: var(--aura-color-primary-500);
@@ -222,16 +234,16 @@ const handleBlur = (evt: FocusEvent) => {
   border-color: var(--aura-color-danger-600);
 }
 
-/* 类型 - 默认 */
-.h-button--default {
-  background-color: white;
-  color: var(--aura-text-primary);
-  border-color: var(--aura-border-default);
+/* 类型 - 信息 */
+.h-button--info {
+  background-color: var(--aura-color-info-500);
+  color: white;
+  border-color: var(--aura-color-info-500);
 }
 
-.h-button--default:hover:not(.is-disabled) {
-  border-color: var(--aura-color-primary-500);
-  color: var(--aura-color-primary-500);
+.h-button--info:hover:not(.is-disabled) {
+  background-color: var(--aura-color-info-600);
+  border-color: var(--aura-color-info-600);
 }
 
 /* 类型 - 文字 */
