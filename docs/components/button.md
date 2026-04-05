@@ -2,7 +2,7 @@
 
 常用的操作按钮。
 
-## 交互演示
+## 基础用法
 
 <ComponentPlayground
   component="button"
@@ -10,7 +10,7 @@
   :propConfig="{
     type: {
       type: 'select',
-      label: '按钮类型',
+      label: '类型',
       default: 'primary',
       options: [
         { label: 'Default', value: 'default' },
@@ -51,37 +51,31 @@
   </template>
 </ComponentPlayground>
 
-## 按钮类型
-
-<ComponentPlayground
-  component="button"
->
-  <template #default>
-    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-      <HButton>默认</HButton>
-      <HButton type="primary">主要</HButton>
-      <HButton type="success">成功</HButton>
-      <HButton type="warning">警告</HButton>
-      <HButton type="danger">危险</HButton>
-      <HButton type="info">信息</HButton>
-      <HButton type="text">文字</HButton>
-      <HButton type="link">链接</HButton>
-    </div>
-  </template>
-</ComponentPlayground>
-
 ## 按钮形状
 
 <ComponentPlayground
   component="button"
+  :defaultProps="{ type: 'primary' }"
+  :propConfig="{
+    plain: {
+      type: 'boolean',
+      label: '朴素样式',
+      default: false
+    },
+    round: {
+      type: 'boolean',
+      label: '圆角',
+      default: false
+    },
+    circle: {
+      type: 'boolean',
+      label: '圆形',
+      default: false
+    }
+  }"
 >
-  <template #default>
-    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-      <HButton type="primary" plain>朴素按钮</HButton>
-      <HButton type="primary" round>圆角按钮</HButton>
-      <HButton type="primary" circle icon="plus" />
-      <HButton type="primary" circle>✓</HButton>
-    </div>
+  <template #default="{ props }">
+    <HButton v-bind="props">{{ props.circle ? '+' : '按钮' }}</HButton>
   </template>
 </ComponentPlayground>
 
@@ -89,7 +83,28 @@
 
 <ComponentPlayground
   component="button"
+  :defaultProps="{ type: 'primary' }"
   :propConfig="{
+    ripple: {
+      type: 'boolean',
+      label: '涟漪效果',
+      default: true
+    },
+    hoverLift: {
+      type: 'boolean',
+      label: '悬停上浮',
+      default: true
+    },
+    hoverGlow: {
+      type: 'boolean',
+      label: '悬停发光',
+      default: false
+    },
+    pressScale: {
+      type: 'boolean',
+      label: '点击缩放',
+      default: true
+    },
     glass: {
       type: 'boolean',
       label: '玻璃效果',
@@ -99,44 +114,148 @@
       type: 'boolean',
       label: '渐变背景',
       default: false
-    },
-    hoverGlow: {
-      type: 'boolean',
-      label: '悬停发光',
-      default: false
-    },
-    ripple: {
-      type: 'boolean',
-      label: '涟漪效果',
-      default: true
     }
   }"
 >
   <template #default="{ props }">
-    <HButton type="primary" v-bind="props">动效演示</HButton>
+    <HButton v-bind="props">动效演示</HButton>
   </template>
 </ComponentPlayground>
 
-## 块级按钮
+## 布局与图标
 
 <ComponentPlayground
   component="button"
+  :defaultProps="{ type: 'primary' }"
   :propConfig="{
     block: {
       type: 'boolean',
       label: '块级按钮',
       default: false
+    },
+    icon: {
+      type: 'string',
+      label: '图标类名',
+      default: ''
     }
   }"
 >
   <template #default="{ props }">
-    <HButton type="primary" v-bind="props">块级按钮</HButton>
+    <HButton v-bind="props">按钮</HButton>
+  </template>
+</ComponentPlayground>
+
+## 原生属性
+
+<ComponentPlayground
+  component="button"
+  :defaultProps="{ type: 'primary' }"
+  :propConfig="{
+    nativeType: {
+      type: 'select',
+      label: '原生类型',
+      default: 'button',
+      options: [
+        { label: 'Button', value: 'button' },
+        { label: 'Submit', value: 'submit' },
+        { label: 'Reset', value: 'reset' }
+      ]
+    },
+    autofocus: {
+      type: 'boolean',
+      label: '自动聚焦',
+      default: false
+    },
+    tag: {
+      type: 'select',
+      label: '标签',
+      default: 'button',
+      options: [
+        { label: 'button', value: 'button' },
+        { label: 'a', value: 'a' },
+        { label: 'div', value: 'div' }
+      ]
+    }
+  }"
+>
+  <template #default="{ props }">
+    <HButton v-bind="props">原生属性</HButton>
+  </template>
+</ComponentPlayground>
+
+## 节流防抖
+
+<ComponentPlayground
+  component="button"
+  :defaultProps="{ type: 'primary' }"
+  :propConfig="{
+    throttle: {
+      type: 'number',
+      label: '节流(ms)',
+      default: 0,
+      min: 0,
+      max: 5000
+    },
+    debounce: {
+      type: 'number',
+      label: '防抖(ms)',
+      default: 0,
+      min: 0,
+      max: 5000
+    }
+  }"
+  :events="['click']"
+>
+  <template #default="{ props, on }">
+    <HButton v-bind="props" @click="on('click')">快速点击试试</HButton>
+  </template>
+</ComponentPlayground>
+
+## 涟漪颜色
+
+<ComponentPlayground
+  component="button"
+  :defaultProps="{ type: 'primary', ripple: true }"
+  :propConfig="{
+    rippleColor: {
+      type: 'select',
+      label: '涟漪颜色',
+      default: 'currentColor',
+      options: [
+        { label: '默认', value: 'currentColor' },
+        { label: '白色', value: '#ffffff' },
+        { label: '金色', value: '#fbbf24' },
+        { label: '青色', value: '#22d3d3' }
+      ]
+    },
+    glowColor: {
+      type: 'select',
+      label: '发光颜色',
+      default: '',
+      options: [
+        { label: '默认', value: '' },
+        { label: '蓝色', value: '#3b82f6' },
+        { label: '紫色', value: '#8b5cf6' },
+        { label: '粉色', value: '#ec4899' }
+      ]
+    },
+    hoverGlow: {
+      type: 'boolean',
+      label: '启用发光',
+      default: false
+    }
+  }"
+>
+  <template #default="{ props }">
+    <HButton v-bind="props">颜色演示</HButton>
   </template>
 </ComponentPlayground>
 
 ## API
 
 ### Props
+
+**基础属性**
 
 | 属性 | 说明 | 类型 | 可选值 | 默认值 |
 |------|------|------|--------|--------|
@@ -149,11 +268,16 @@
 | circle | 圆形按钮 | `boolean` | — | `false` |
 | block | 块级按钮 | `boolean` | — | `false` |
 | icon | 图标类名 | `string` | — | — |
+
+**原生属性**
+
+| 属性 | 说明 | 类型 | 可选值 | 默认值 |
+|------|------|------|--------|--------|
 | nativeType | 原生 type | `string` | `button` / `submit` / `reset` | `button` |
 | autofocus | 自动聚焦 | `boolean` | — | `false` |
 | tag | 自定义标签 | `string` | — | `'button'` |
 
-**动效相关 Props**
+**动效属性**
 
 | 属性 | 说明 | 类型 | 默认值 |
 |------|------|------|--------|
@@ -166,7 +290,7 @@
 | glass | 玻璃效果 | `boolean` | `false` |
 | gradient | 渐变背景 | `boolean` | `false` |
 
-**节流防抖 Props**
+**节流防抖**
 
 | 属性 | 说明 | 类型 | 默认值 |
 |------|------|------|--------|
